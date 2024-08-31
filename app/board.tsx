@@ -2,7 +2,12 @@
 
 import { useState } from "react";
 
-function Square({ value, onSquareClick }) {
+interface SquareProps {
+  value: string; // O el tipo que corresponda
+  onSquareClick: () => void; // O el tipo que corresponda
+}
+
+function Square({ value, onSquareClick }: SquareProps) {
   return (
     <button
       className="border-slate-500 border-2 border-solid text-4xl xl:text-6xl font-semibold leading-8 h-14 w-14 xl:w-28 xl:h-28 float-left	text-center	p-0 mt--px mr--px text-slate-300"
@@ -17,7 +22,7 @@ export default function Board() {
   const [xIsNext, setXIsNext] = useState(true);
   const [squares, setSquares] = useState(Array(9).fill(null));
 
-  function handleClick(i) {
+  function handleClick(i: any) {
     if (squares[i] || calculateWinner(squares)) {
       return;
     }
@@ -64,7 +69,7 @@ export default function Board() {
   );
 }
 
-function calculateWinner(squares) {
+function calculateWinner(squares: any) {
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
